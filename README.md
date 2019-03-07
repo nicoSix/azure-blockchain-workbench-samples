@@ -1,2 +1,2 @@
-# refrigerated-sc-sample
-A sample end-to-end solution for a refrigerated supply chain
+# refrigered-supply-chain-samples
+Refrigered supply chain code samples for the End-to-End Blockchain Solution - Refrigerated Supply Chain guide.
