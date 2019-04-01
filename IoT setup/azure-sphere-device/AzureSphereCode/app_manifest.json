@@ -1,0 +1,19 @@
+{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereCode",
+  "ComponentId": "acadce2a-a583-4b15-b0f8-f812f8232f96",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedConnections": [ "nsix-workbench-hub.azure-devices.net" ],
+    "AllowedTcpServerPorts": [],
+    "AllowedUdpServerPorts": [],
+    "Gpio": [ 8, 9, 10, 15, 16, 17, 18, 19, 20, 12, 13, 0, 1, 4, 5, 57, 58, 11, 14, 48 ],
+    "Uart": [ "ISU0", "ISU3" ],
+    "I2cMaster": [],
+    "SpiMaster": [],
+    "WifiConfig": true,
+    "NetworkConfig": false,
+    "SystemTime": false
+  }
+}

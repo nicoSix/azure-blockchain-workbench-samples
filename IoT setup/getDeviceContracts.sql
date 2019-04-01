@@ -1,5 +1,3 @@
-
-
 -- =============================================
 -- Authors:      Marc Mercuri, Nicolas Six
 -- Create Date: May 4, 2018

@@ -1,0 +1,122 @@
+[
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\cores\\arduino"
+  },
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\variants\\MXChip_AZ3166"
+  },
+  {
+    "Sourcefile": "c:\\Users\\t-nisix\\Documents\\Development\\refrigerated-sc-sample\\IoT setup\\mxchip-device\\Device\\.build\\sketch\\device.ino.cpp",
+    "Include": "Sensor.h",
+    "Includepath": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\t-nisix\\Documents\\Development\\refrigerated-sc-sample\\IoT setup\\mxchip-device\\Device\\.build\\sketch\\device.ino.cpp",
+    "Include": "AzureIotHub.h",
+    "Includepath": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\AzureIoT\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\t-nisix\\Documents\\Development\\refrigerated-sc-sample\\IoT setup\\mxchip-device\\Device\\.build\\sketch\\device.ino.cpp",
+    "Include": "AZ3166WiFi.h",
+    "Includepath": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\WiFi\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\t-nisix\\Documents\\Development\\refrigerated-sc-sample\\IoT setup\\mxchip-device\\Device\\.build\\sketch\\device.ino.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\HTS221Sensor.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\IoT_DevKit_HW.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\IrDASensor.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\LIS2MDLSensor.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\LPS22HBSensor.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\LSM6DSLSensor.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\RGB_LED.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\utility\\HTS221_driver.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\utility\\LPS22HB_driver.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\Sensors\\src\\utility\\LSM6DSL_acc_gyro_driver.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\AzureIoT\\src\\AzureIotHub.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\AzureIoT\\src\\DevKitMQTTClient.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\AzureIoT\\src\\DevKitOTAUtils.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\AzureIoT\\src\\DevkitDPSClient.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\WiFi\\src\\AZ3166WiFi.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\WiFi\\src\\AZ3166WiFiClient.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\WiFi\\src\\AZ3166WiFiServer.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\t-nisix\\AppData\\Local\\Arduino15\\packages\\AZ3166\\hardware\\stm32f4\\1.6.1\\libraries\\WiFi\\src\\AZ3166WiFiUdp.cpp",
+    "Include": "",
+    "Includepath": ""
+  }
+]

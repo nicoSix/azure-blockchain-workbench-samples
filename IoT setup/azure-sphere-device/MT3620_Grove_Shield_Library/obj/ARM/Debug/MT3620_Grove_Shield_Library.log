@@ -1,0 +1,243 @@
+﻿  . HAL\GroveI2C.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  .. HAL\../applibs_versions.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/unistd.h
+  . HAL\GroveUART.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  . Common\Delay.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/time.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/string.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  Multiple include guards may be useful for:
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. HAL\../applibs_versions.h
+  . HAL\GroveUART.h
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart_config_v1.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart_config_v1.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  ..... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart_internal.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  ..... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  ..... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart_internal.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/unistd.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . HAL\GroveShield.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/time.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. HAL\../applibs_versions.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . HAL\GroveUART.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart_config_v1.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  ..... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/uart_internal.h
+  . HAL\GroveI2C.h
+  . HAL\../Common/Delay.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/log.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdarg.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/unistd.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/string.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . HAL\../mt3620_rdb.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/soc/mt3620_gpios.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/soc/mt3620_uarts.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . Sensors\GroveAD7992.h
+  .. Sensors\../applibs_versions.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/time.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . Sensors\../HAL/GroveI2C.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . Sensors\GroveLightSensor.h
+  . Sensors\GroveAD7992.h
+  .. Sensors\../applibs_versions.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/unistd.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/time.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  . Sensors\Grove4DigitDisplay.h
+  .. Sensors\../applibs_versions.h
+  . Sensors\../Common/Delay.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . Sensors\GroveLEDButton.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/unistd.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/time.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . Sensors\GroveOledDisplay96x96.h
+  .. Sensors\../applibs_versions.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  . Sensors\../HAL/GroveI2C.h
+  Sensors\GroveOledDisplay96x96.c: In function 'setTextXY':
+Sensors\GroveOledDisplay96x96.c(309,15): warning :  conversion to 'uint8_t {aka unsigned char}' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(309,15): warning :    sendCommand(0xb0 + (Row & 0x0F));  // set page/row
+Sensors\GroveOledDisplay96x96.c(309,15): warning :                ^~~~
+Sensors\GroveOledDisplay96x96.c(310,15): warning :  conversion to 'uint8_t {aka unsigned char}' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(310,15): warning :    sendCommand(0x10 + ((Column >> 4) & 0x07));  // set column high 3 bytex
+Sensors\GroveOledDisplay96x96.c(310,15): warning :                ^~~~
+Sensors\GroveOledDisplay96x96.c(310,15): warning : Sensors\GroveOledDisplay96x96.c: In function 'putChar':
+Sensors\GroveOledDisplay96x96.c(366,10): warning :  conversion to 'char' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(366,10): warning :      c |= (bit1 == 1) ? grayH : 0x00;
+Sensors\GroveOledDisplay96x96.c(366,10): warning :           ^
+Sensors\GroveOledDisplay96x96.c(367,10): warning :  conversion to 'char' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(367,10): warning :      c |= (bit2 == 1) ? grayL : 0x00;
+Sensors\GroveOledDisplay96x96.c(367,10): warning :           ^
+Sensors\GroveOledDisplay96x96.c(367,10): warning : Sensors\GroveOledDisplay96x96.c: In function 'putNumber':
+Sensors\GroveOledDisplay96x96.c(414,22): warning :  conversion to 'unsigned char' from 'long int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(414,22): warning :    char_buffer[i++] = long_num % 10;
+Sensors\GroveOledDisplay96x96.c(414,22): warning :                       ^~~~~~~~
+Sensors\GroveOledDisplay96x96.c(418,6): warning :  conversion to 'unsigned char' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(418,6): warning :   f = f + i;
+Sensors\GroveOledDisplay96x96.c(418,6): warning :       ^
+Sensors\GroveOledDisplay96x96.c(421,11): warning :  conversion to 'unsigned char' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(421,11): warning :    putChar('0' + char_buffer[i - 1]);
+Sensors\GroveOledDisplay96x96.c(421,11): warning :            ^~~
+Sensors\GroveOledDisplay96x96.c(421,11): warning : Sensors\GroveOledDisplay96x96.c: In function 'drawBitmap':
+Sensors\GroveOledDisplay96x96.c(448,10): warning :  conversion to 'char' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(448,10): warning :      c |= (bit1) ? grayH : 0x00;
+Sensors\GroveOledDisplay96x96.c(448,10): warning :           ^
+Sensors\GroveOledDisplay96x96.c(450,10): warning :  conversion to 'char' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(450,10): warning :      c |= (bit2) ? grayL : 0x00;
+Sensors\GroveOledDisplay96x96.c(450,10): warning :           ^
+Sensors\GroveOledDisplay96x96.c(475,12): warning :  conversion to 'char' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(475,12): warning :      tmp |= ((bits >> (7 - b)) & 0x01) << b;
+Sensors\GroveOledDisplay96x96.c(475,12): warning :             ^
+  . Sensors\GroveRelay.h
+  .. Sensors\../applibs_versions.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . Sensors\GroveRotaryAngleSensor.h
+  . Sensors\GroveAD7992.h
+  .. Sensors\../applibs_versions.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/applibs/gpio.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . Sensors\GroveTempHumiBaroBME280.h
+  .. Sensors\../applibs_versions.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/math.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . Sensors\../HAL/GroveI2C.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  ... C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+Sensors\GroveOledDisplay96x96.c(485,18): warning :  conversion to 'uint8_t {aka unsigned char}' from 'int' may alter its value [-Wconversion]
+Sensors\GroveOledDisplay96x96.c(485,18): warning :       column_h += 0x01;
+Sensors\GroveOledDisplay96x96.c(485,18): warning :                   ^~~~
+Sensors\GroveOledDisplay96x96.c(485,18): warning : Multiple include guards may be useful for:
+Sensors\GroveOledDisplay96x96.c(485,18): warning : C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/posix.h
+Sensors\GroveOledDisplay96x96.c(485,18): warning : C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . Sensors\GroveTempHumiSHT31.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdint.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdlib.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/features.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/time.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/math.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/alltypes.h
+  . Sensors\../HAL/GroveI2C.h
+  .. C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/stdbool.h
+  .. Sensors\../HAL/../applibs_versions.h
+  . Sensors\../Common/Delay.h
+  Multiple include guards may be useful for:
+  C:\Program Files (x86)\Microsoft Azure Sphere SDK\Sysroots\1/usr/include/bits/stdint.h
