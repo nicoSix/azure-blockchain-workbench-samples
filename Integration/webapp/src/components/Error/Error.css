@@ -1,0 +1,15 @@
+#error .centered {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#error .error-text {
+    color: white;
+    text-align:center;
+}
+
+#error .error-button {
+    text-align:center;
+}

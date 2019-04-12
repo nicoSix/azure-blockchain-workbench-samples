@@ -1,0 +1,35 @@
+#shipments {
+    background: rgba(255, 255, 255, 1);
+    height:100vh;
+}
+
+#shipments .card {
+    margin-bottom: 10px;
+}
+
+#shipments .container-fluid {
+    margin-top: 30px;
+}
+
+#shipments .bold {
+    font-weight: bold;
+}
+
+#shipments .card-text {
+    font-size: 80%;
+}
+
+#shipments p {
+    margin: 2px;
+}
+
+#shipments .filtersCardTitle {
+    text-align: center;
+}
+
+#shipments .loadingGif {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+}
+

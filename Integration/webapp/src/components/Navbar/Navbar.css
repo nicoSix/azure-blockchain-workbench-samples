@@ -1,0 +1,36 @@
+#navbar .microsoft-logo {
+    max-width: 20%;
+    max-height: 20%;
+}
+
+#navbar .nav-link {
+    color:white;
+    font-size: 120%;
+}
+
+#navbar .nav-link:hover {
+    color:rgba(255, 255, 255, 0.9);
+    font-size: 120%;
+    cursor: pointer;
+}
+
+#navbar .nav-item {
+    padding-right: 20px;
+}
+
+#navbar .full-navbar {
+    background: #002850;
+}
+
+#navbar .name-label {
+    color: #002850;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+#navbar .name-label:hover {
+    color: #011c36;
+}

@@ -1,0 +1,12 @@
+#minimal-navbar .div-microsoft-logo {
+    padding:20px;
+}
+
+#minimal-navbar .microsoft-logo {
+    max-width: 20%;
+    max-height: 20%;
+}
+
+#minimal-navbar .navbar {
+    background: none;
+}
