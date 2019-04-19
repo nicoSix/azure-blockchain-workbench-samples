@@ -1,41 +1,48 @@
-#shipments {
+#users {
     background: rgba(255, 255, 255, 1);
     height:100vh;
 }
 
-#shipments .card {
+#users .card {
     margin-bottom: 10px;
 }
 
-#shipments .container-fluid {
+#users .container-fluid {
     margin-top: 30px;
 }
 
-#shipments .bold {
+#users .bold {
     font-weight: bold;
 }
 
-#shipments .card-text {
+#users .card-text {
     font-size: 80%;
 }
 
-#shipments p {
+#users p {
     margin: 2px;
 }
 
-#shipments .filtersCardTitle {
+#users .filtersCardTitle {
     text-align: center;
 }
 
-#shipments .loadingGif {
-    z-index: 9999;
+#users .loadingGif {
     position:fixed;
     top: 50%;
     left: 50%;
 }
 
-#shipments .btn-smoothblue {
+#users .badge {
+    margin-left: 5px;
+}
+
+#users .btn-action {
+    margin-right: 10px;
+}
+
+#users .badge-smoothblue, #users .btn-smoothblue {
     background-color: #008aa3;
     border-color: #008aa3;
     color: white;
-  }
+}

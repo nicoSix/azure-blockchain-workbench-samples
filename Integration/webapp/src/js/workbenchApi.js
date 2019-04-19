@@ -1,22 +1,13 @@
 
-import { adalApiFetch, adalDBApiFetch } from './adalConfig';
-//import { adalApiFetch } from './adalConfig';
+import { adalApiFetch } from './adalConfig';
 import fetch from 'isomorphic-fetch';
 
 const API_URI = 'https://bcworkbench-nwiyh3-api.azurewebsites.net/api/v1';
-const DB_API_URL = 'https://workbench-api.azurewebsites.net/api';
 
-function apiRequest(apiType, URL) {
-    if(apiType === 'DBAPI') {
-        var sendRequest = adalDBApiFetch;
-    }
-    else {
-        var sendRequest = adalApiFetch;
-    }
-
-    return sendRequest(fetch, URL)
+function apiRequest(URL, options) {
+    return adalApiFetch(fetch, URL, options)
         .then(response => {
-            if(response.status === 200)  {
+            if(response.status === 200 || response.status === 204)  {
                 return response.json().then(jsonResponse => {
                     return {
                         content: jsonResponse,
@@ -36,6 +27,49 @@ function apiRequest(apiType, URL) {
         .then(parsedResponse => {
             return parsedResponse;
         });    
+}
+
+function parseBodyContract(contract) {
+    return JSON.stringify({
+        "workflowFunctionID": 0,
+        "workflowActionParameters": [
+          {
+            "name": "device",
+            "value": contract.device,
+            "workflowFunctionParameterId": 0
+          },
+          {
+            "name": "supplyChainOwner",
+            "value": contract.owner,
+            "workflowFunctionParameterId": 1
+          },
+          {
+            "name": "supplyChainObserver",
+            "value": contract.observer,
+            "workflowFunctionParameterId": 2
+          },
+          {
+            "name": "minHumidity",
+            "value": contract.minHumidity,
+            "workflowFunctionParameterId": 3
+          },
+          {
+            "name": "maxHumidity",
+            "value": contract.maxHumidity,
+            "workflowFunctionParameterId": 4
+          },
+          {
+            "name": "minTemperature",
+            "value": contract.minTemperature,
+            "workflowFunctionParameterId": 5
+          },
+          {
+            "name": "maxTemperature",
+            "value": contract.maxTemperature,
+            "workflowFunctionParameterId": 6
+          },
+        ]
+      });
 }
 
 function responseChecker(resp, errorText) {
@@ -95,15 +129,22 @@ async function getContractParty(party, contractParties) {
 
 export const getContracts = async () => {
     try {
-        return await apiRequest('API', API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
+        return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
             if(appReq.response.status === 200) {
-                return apiRequest('API', API_URI + "/applications/" + appReq.content.applications[0].id + "/workflows").then(wfReq => {
+                return apiRequest(API_URI + "/applications/" + appReq.content.applications[0].id + "/workflows").then(wfReq => {
                     if(wfReq.response.status === 200) {
-                        return apiRequest('API', API_URI + "/contracts?workflowId=" + wfReq.content.workflows[0].id).then(async contractsReq => {
+                        return apiRequest(API_URI + "/contracts?top=99999&workflowId=" + wfReq.content.workflows[0].id).then(async contractsReq => {
                             if(contractsReq.response.status === 200) {
                                 var contracts = contractsReq.content.contracts;
+                                
                                 for(var i = 0; i < contracts.length; i++) {
-                                    contracts[i]["owner"] = await getContractParty('owner', contracts[i].contractProperties);
+                                    if(contracts[i].contractProperties.length !== 0) {
+                                        contracts[i]["owner"] = await getContractParty('owner', contracts[i].contractProperties);
+                                        contracts[i]["deploymentInProgress"] = false;
+                                    }
+                                    else {
+                                        contracts[i]["deploymentInProgress"] = true;
+                                    }
                                 }
                                 return {
                                     content: contracts,
@@ -141,19 +182,8 @@ export const getContracts = async () => {
 
 export const getUserDetails = async userChainIdentifier => {
     try {
-        return await apiRequest('API', API_URI + "/users?userChainIdentifier=" + userChainIdentifier).then(userReq => {
+        return await apiRequest(API_URI + "/users?userChainIdentifier=" + userChainIdentifier).then(userReq => {
             return responseChecker(userReq, 'Unable to get user details.');
-        });
-    }
-    catch(e) {
-        return responseError(e, 'getUserDetails');
-    }
-}
-
-export const getDeviceFromAddress = async userChainIdentifier => {
-    try {
-        return await apiRequest('DBAPI', DB_API_URL + "/deviceFromAddress?deviceAddress=" + userChainIdentifier).then(userReq => {
-            return responseChecker(userReq, 'Unable to get device details.');
         });
     }
     catch(e) {
@@ -163,7 +193,7 @@ export const getDeviceFromAddress = async userChainIdentifier => {
 
 export const getLoggedUser = async () => {
     try {
-        return await apiRequest('API', API_URI + "/users/me").then(userReq => {
+        return await apiRequest(API_URI + "/users/me").then(userReq => {
             return responseChecker(userReq, 'Unable to get current user.');
         });
     }
@@ -172,9 +202,69 @@ export const getLoggedUser = async () => {
     }
 }
 
+export const getUsers = async () => {
+    try {
+        return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
+            if(appReq.response.status === 200) {
+                return apiRequest(API_URI + "/applications/" + appReq.content.applications[0].id + "/roleAssignments").then(async permissionsReq => {
+                    var usersReq = await apiRequest(API_URI + "/users");
+                    var users = usersReq.content.users;
+
+                    permissionsReq.content.roleAssignments.forEach(p => {
+                        if(users[p.user.userID - 1]["rolesAssignments"] === undefined) users[p.user.userID - 1]["rolesAssignments"] = [];
+                        users[p.user.userID - 1].rolesAssignments.push(p.applicationRoleId);
+                    });
+
+                    var filteredUsers = users.filter(function(user, index, arr) {
+                        return (user["rolesAssignments"] !== undefined);
+                    });
+
+                    usersReq.content.users = filteredUsers;
+                    return usersReq;
+                });
+            }
+            else {
+                return {
+                    error: 'Unable to get application ID.',
+                    response: appReq.response
+                }
+            }
+        });
+    }
+    catch(e) {
+        return responseError(e, 'getUsers');
+    }
+};
+
+export const getUsersFromAssignment = async roleId => {
+    try {
+        var appRes = await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
+            if(appReq.response.status === 200) {
+                return appReq.content.applications[0].id;
+            }
+            else {
+                return {
+                    error: 'Unable to get application ID.',
+                    response: appReq.response
+                }
+            }
+        });
+
+
+        if(appRes.error === undefined) 
+            return apiRequest(API_URI + "/applications/" + appRes + "/roleAssignments?applicationRoleId=" + roleId).then(async permissionsReq => {
+                return responseChecker(permissionsReq, 'Unable to get users from role id.');
+            });
+        else return appRes;
+    }
+    catch(e) {
+        return responseError(e, 'getContracts');
+    }
+}
+
 export const getContract = async contractId => {
     try {
-        return await apiRequest('API', API_URI + "/contracts/" + contractId).then(async contractReq => {
+        return await apiRequest(API_URI + "/contracts/" + contractId).then(async contractReq => {
             if(contractReq.response.status === 200) {
                 contractReq.content["owner"] = await getContractParty('owner', contractReq.content.contractProperties);
                 contractReq.content["initiatingCounterparty"] = await getContractParty('initiatingCounterparty', contractReq.content.contractProperties);
@@ -194,3 +284,17 @@ export const getContract = async contractId => {
     }
 } 
 
+export const postContract = async contract => {
+    try {
+        return await apiRequest(API_URI + "/contracts?workflowId=1&contractCodeId=1&connectionId=1", {
+            method: "post",
+            headers: {'Content-type': 'application/json'},
+            body: parseBodyContract(contract)
+        }).then(contractReq => {
+            return responseChecker(contractReq, 'Unable to post new contract.');
+        });
+    }
+    catch(e) {
+        return responseError(e, 'postContract');
+    }
+}

@@ -6,10 +6,12 @@
     "bootstrap": "^4.3.1",
     "isomorphic-fetch": "^2.2.1",
     "local-storage": "^1.4.2",
+    "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-adal": "^0.4.22",
     "react-dom": "^16.8.6",
     "react-icons": "^2.2.7",
+    "react-modal": "^3.8.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },

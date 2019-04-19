@@ -5,7 +5,7 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import * as serviceWorker from './serviceWorker';
 import { runWithAdal } from 'react-adal';
-import { authContextApi, authContextDBApi } from './js/adalConfig';
+import { authContextApi } from './js/adalConfig';
 
 runWithAdal(authContextApi, () => {
     ReactDOM.render(<App />, document.getElementById('root'));

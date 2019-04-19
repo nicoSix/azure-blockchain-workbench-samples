@@ -19,11 +19,10 @@ class Navbar extends Component {
 
     logOut() {
         authContextApi.logOut();
-        //authContextDBApi.logOut();
     }
 
     openCurrentUser() {
-        window.location.href = window.location.origin + '/users/' + this.state.currentUser.userID;
+        window.location.href = window.location.origin + '/users?name=' + this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName;
     }
 
     async componentDidMount() {
@@ -39,7 +38,7 @@ class Navbar extends Component {
     render() {
         return (
             <div id="navbar">
-                <nav className="navbar navbar-expand-lg full-navbar">
+                <nav className="navbar navbar-expand-sm full-navbar">
                     <a className="navbar-brand" href="http://www.microsoft.com">
                         <img src={logoSmall} alt="Microsoft"/>
                     </a>

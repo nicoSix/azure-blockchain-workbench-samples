@@ -5,10 +5,6 @@ import MinimalNavbar from '../MinimalNavbar/MinimalNavbar';
 import './Login.css';
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     goToShipments() {
         window.location.href = window.location.origin + '/shipments';
     }
