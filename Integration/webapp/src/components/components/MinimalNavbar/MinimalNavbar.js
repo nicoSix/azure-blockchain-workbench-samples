@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MinimalNavbar.css';
-import logo from '../../img/microsoft_logo.png';
+import logo from '../../../img/microsoft_logo.png';
 
 class MinimalNavbar extends Component {
     render() {

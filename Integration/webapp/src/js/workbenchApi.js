@@ -102,6 +102,9 @@ async function getContractParty(party, contractParties) {
             case 'currentCounterparty':
                 return getUserDetails(contractParties[3].value);
 
+            case 'lastCounterparty':
+                return getUserDetails(contractParties[4].value);
+
             case 'device':
                 return getUserDetails(contractParties[5].value);
 
@@ -202,6 +205,18 @@ export const getLoggedUser = async () => {
     }
 }
 
+export const getContractActions = async contractId => {
+    try {
+        return await apiRequest(API_URI + "/contracts/" + contractId + "/actions").then(contractReq => {
+            return responseChecker(contractReq, 'Unable to get contract actions.');
+        });
+    }
+    catch(e) {
+        return responseError(e, 'getContractActions');
+    }
+}
+
+
 export const getUsers = async () => {
     try {
         return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
@@ -269,6 +284,7 @@ export const getContract = async contractId => {
                 contractReq.content["owner"] = await getContractParty('owner', contractReq.content.contractProperties);
                 contractReq.content["initiatingCounterparty"] = await getContractParty('initiatingCounterparty', contractReq.content.contractProperties);
                 contractReq.content["currentCounterparty"] = await getContractParty('currentCounterparty', contractReq.content.contractProperties);
+                contractReq.content["lastCounterparty"] = await getContractParty('lastCounterparty', contractReq.content.contractProperties);
                 contractReq.content["device"] = await getContractParty('device', contractReq.content.contractProperties);
                 contractReq.content["observer"] = await getContractParty('observer', contractReq.content.contractProperties);
                 return contractReq;
@@ -296,5 +312,20 @@ export const postContract = async contract => {
     }
     catch(e) {
         return responseError(e, 'postContract');
+    }
+}
+
+export const postContractAction = async (contractId, actionId, params) => {
+    try {
+        return await apiRequest(API_URI + "/contracts/" + contractId + "/actions", {
+            method: "post",
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({"workflowActionParameters": params, "workflowFunctionId": actionId})
+        }).then(contractReq => {
+            return responseChecker(contractReq, 'Unable to post new contract action.');
+        });
+    }
+    catch(e) {
+        return responseError(e, 'postContractAction');
     }
 }

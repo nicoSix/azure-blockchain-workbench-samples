@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MicrosoftIcon from 'react-icons/lib/ti/vendor-microsoft';
-import MinimalNavbar from '../MinimalNavbar/MinimalNavbar';
+import MinimalNavbar from '../../components/MinimalNavbar/MinimalNavbar';
 
 import './Login.css';
 

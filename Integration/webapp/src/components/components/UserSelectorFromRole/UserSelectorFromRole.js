@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { getUsersFromAssignment } from '../../js/workbenchApi';
+import { getUsersFromAssignment, getContract } from '../../../js/workbenchApi';
 
 class UserSelectorFromRole extends Component {
     constructor(props) {
         super(props);
         this.roleId = props.role;
+        this.partyInContract = props.partyincontract;
         this.state = {
             roleAssignments: [],
         }

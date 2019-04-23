@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Login from './components/Login/Login';
-import Shipments from './components/Shipments/Shipments';
-import ShipmentDetails from './components/ShipmentDetails/ShipmentDetails';
-import Error from './components/Error/Error';
-import Users from './components/Users/Users';
+import Login from './components/pages/Login/Login';
+import Shipments from './components/pages/Shipments/Shipments';
+import ShipmentDetails from './components/pages/ShipmentDetails/ShipmentDetails';
+import Error from './components/pages/Error/Error';
+import Users from './components/pages/Users/Users';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { withAdalLoginApi } from './js/adalConfig';
 

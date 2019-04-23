@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import UserSelectorFromRole from '../UserSelectorFromRole/UserSelectorFromRole';
-import { postContract } from '../../js/workbenchApi';
+import UserSelectorFromRole from '../../components/UserSelectorFromRole/UserSelectorFromRole';
+import { postContract } from '../../../js/workbenchApi';
 import './NewShipmentModalForm.css';
-import '../../App.css';
+import '../../../App.css';
 
 class NewShipmentModalForm extends Component {
     constructor(props){
@@ -21,7 +21,10 @@ class NewShipmentModalForm extends Component {
             maxHumidity: this.refs.maxHumidity.value,
         }
 
+        this.parent.setState({ displayLoadingGif: true });
+
         postContract(contract).then(contractReq => {
+            this.parent.setState({ displayLoadingGif: false });
             this.parent.closeModal();
 
             if(contractReq.response.status === 200) {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar/Navbar';
-import loadingGif from '../../img/loading.gif';
-import { getUsers } from '../../js/workbenchApi';
-import { getRoleFromRoleId } from '../../js/util';
+import Navbar from '../../components/Navbar/Navbar';
+import loadingGif from '../../../img/loading.gif';
+import { getUsers } from '../../../js/workbenchApi';
+import { getRoleFromRoleId } from '../../../js/util';
 import * as qs from 'query-string';
 import './Users.css';
 

@@ -1,43 +1,48 @@
-#shipmentDetails {
+#users {
     background: rgba(255, 255, 255, 1);
     height:100vh;
 }
 
-#shipmentDetails .card {
+#users .card {
     margin-bottom: 10px;
 }
 
-#shipmentDetails .container {
+#users .container-fluid {
     margin-top: 30px;
 }
 
-#shipmentDetails .bold {
+#users .bold {
     font-weight: bold;
 }
 
-#shipmentDetails .card-text {
+#users .card-text {
     font-size: 80%;
 }
 
-#shipmentDetails p {
+#users p {
     margin: 2px;
 }
 
-#shipmentDetails .filtersCardTitle {
+#users .filtersCardTitle {
     text-align: center;
 }
 
-#shipmentDetails .loadingGif {
+#users .loadingGif {
     position:fixed;
     top: 50%;
     left: 50%;
+    z-index: 9999;
 }
 
-#shipmentDetails .row {
-    margin-bottom: 10px;
+#users .badge {
+    margin-left: 5px;
 }
 
-#shipmentDetails .btn-smoothblue {
+#users .btn-action {
+    margin-right: 10px;
+}
+
+#users .badge-smoothblue, #users .btn-smoothblue {
     background-color: #008aa3;
     border-color: #008aa3;
     color: white;

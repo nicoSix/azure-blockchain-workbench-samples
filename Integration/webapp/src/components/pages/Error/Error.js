@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MinimalNavbar from '../MinimalNavbar/MinimalNavbar';
+import MinimalNavbar from '../../components/MinimalNavbar/MinimalNavbar';
 
 import './Error.css';
 

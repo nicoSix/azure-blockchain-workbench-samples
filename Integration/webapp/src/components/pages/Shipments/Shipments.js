@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar/Navbar';
-import { getContracts } from '../../js/workbenchApi';
-import loadingGif from '../../img/loading.gif';
+import Navbar from '../../components/Navbar/Navbar';
+import { getContracts } from '../../../js/workbenchApi';
+import loadingGif from '../../../img/loading.gif';
 import BoatIcon from 'react-icons/lib/io/android-boat';
 import RefreshIcon from 'react-icons/lib/md/refresh';
 import Modal from 'react-modal';
-import NewShipmentModalForm from '../NewShipmentModalForm/NewShipmentModalForm';
+import NewShipmentModalForm from '../../forms/NewShipmentModalForm/NewShipmentModalForm';
 import './Shipments.css';
 
 const customStyles = {
@@ -17,7 +17,7 @@ const customStyles = {
       marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)'
     }
-  };
+};
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -37,7 +37,7 @@ class Shipments extends Component {
         this.closeModal = this.closeModal.bind(this);
         document.body.style.background = 'white';
 
-        //this.refresh(true);
+        this.refresh(true);
     }
 
     refresh(firstTime) {
@@ -128,7 +128,6 @@ class Shipments extends Component {
     }
 
     filterShipments() {
-        console.log(this);
         var keepValue;
         var tempContracts = [];
 
