@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import { getUsersFromAssignment, getContract } from '../../../js/workbenchApi';
+import { getUsersFromAssignment, getContractUser } from '../../../js/workbenchApi';
 
 class UserSelectorFromRole extends Component {
     constructor(props) {
         super(props);
         this.roleId = props.role;
-        this.partyInContract = props.partyincontract;
+        this.innerRole = (props.innerRole ? props.innerRole : false);
+        this.contractId = (props.contractId ? props.contractId : -1);
         this.state = {
             roleAssignments: [],
         }
     }
 
     componentDidMount() {
-        getUsersFromAssignment(this.roleId).then(roleReq => {
-            if(roleReq.response.status === 200) { 
-                this.setState({
-                    roleAssignments: roleReq.content.roleAssignments
-                })
-            }
-        });
+        if(this.innerRole) {
+            getContractUser(this.contractId, this.roleId).then(roleReq => {
+                console.log(roleReq)
+                if(roleReq.response.status === 200) { 
+                    this.setState({
+                        roleAssignments: [roleReq.content]
+                    })
+                }
+            }) 
+        }
+        else {
+            getUsersFromAssignment(this.roleId).then(roleReq => {
+                if(roleReq.response.status === 200) { 
+                    this.setState({
+                        roleAssignments: roleReq.content.roleAssignments
+                    })
+                }
+            });
+        }   
     }
 
     genOptions() {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
+import ChooseRoleDropdown from '../../components/ChooseRoleDropdown/ChooseRoleDropdown';
 import loadingGif from '../../../img/loading.gif';
-import { getUsers } from '../../../js/workbenchApi';
+import { getUsers, deleteAssignmentToUser } from '../../../js/workbenchApi';
 import { getRoleFromRoleId } from '../../../js/util';
 import * as qs from 'query-string';
 import './Users.css';
@@ -25,21 +26,29 @@ class Users extends Component {
     getUsersGridHeader() {
         return(
             <div className="row">
-                <div className="col-md-10 form-group">
+                <div className="col-md-11 form-group">
                     <input type="text" className="form-control" ref="userSearchField" aria-describedby="userSearchField" placeholder="Type a name or surname to get somebody ..." onChange={ this.filterUsersDelayed.bind(this) }/>
                 </div>
-                <div className="col-md-2">
+                <div className="col-md-1 form-group">
                     <button className="btn btn-smoothblue btn-block">+ Add user</button>
                 </div>
             </div>
         );
     }
 
+    deleteAssignment(assignment) {
+        deleteAssignmentToUser(assignment).then(response => {
+            if(response.status === 204) {
+                this.setUsersInState();
+            }
+        });
+    } 
+
     getRoleLabels(assignments) {
         var stringAssignments = [];
         var i = 0;
         assignments.forEach(assignment => {
-            stringAssignments.push(<span key={i} className="badge badge-smoothblue">{ getRoleFromRoleId(assignment) }<i onClick={console.log('Delete assignment')} style={{cursor: 'pointer'}}> x</i></span>);
+            stringAssignments.push(<span key={i} className="badge badge-smoothblue">{ getRoleFromRoleId(assignment.applicationRoleId) }<i onClick={ this.deleteAssignment.bind(this, assignment) } style={{cursor: 'pointer'}}> x</i></span>);
             i++;
         });
 
@@ -74,6 +83,7 @@ class Users extends Component {
     }
 
     setUsersInState() {
+        this.setState({ displayLoadingGif: true, filteredUsers: [] });
         getUsers().then(usersRequest => {
             switch(usersRequest.response.status) {
                 case 200: 
@@ -138,10 +148,9 @@ class Users extends Component {
                                         <td>{ u.lastName }</td>
                                         <td>{ u.emailAddress }</td>
                                         <td>{ u.userChainMappings[0].chainIdentifier }</td>
-                                        <td>{ this.getRoleLabels(u.rolesAssignments) }</td>
+                                        <td>{ this.getRoleLabels(u.rolesAssignments, u.userID) }</td>
                                         <td>
-                                            <button className="btn btn-smoothblue btn-action">Change roles</button>
-                                            <button className="btn btn-danger">Delete user</button>
+                                            <ChooseRoleDropdown userId={ u.userID } parent={ this } rolesAlreadyOwned={ u.rolesAssignments }/>
                                         </td>
                                     </tr>
                                 )}

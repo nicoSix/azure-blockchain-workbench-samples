@@ -7,13 +7,16 @@ const API_URI = 'https://bcworkbench-nwiyh3-api.azurewebsites.net/api/v1';
 function apiRequest(URL, options) {
     return adalApiFetch(fetch, URL, options)
         .then(response => {
-            if(response.status === 200 || response.status === 204)  {
+            if(response.status === 200)  {
                 return response.json().then(jsonResponse => {
                     return {
                         content: jsonResponse,
                         response: response
                     }
                 });
+            }
+            if(response.status === 204)  {
+                return response;
             }
             else if(response.status === 401) return {
                 error: 'Unauthorized',
@@ -216,6 +219,54 @@ export const getContractActions = async contractId => {
     }
 }
 
+export const addAssignmentToUser = async (userId, roleId) => {
+    try {
+        return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(async appReq => {
+            if(appReq.response.status === 200) {
+                return await apiRequest(API_URI + "/applications/" + appReq.content.applications[0].id + "/roleAssignments", {
+                    method: "post",
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        "userId": userId,
+                        "applicationRoleId": roleId
+                    })
+                }).then(userReq => {
+                    return responseChecker(userReq, 'Unable to add assignment.');
+                });
+            }
+            else {
+                return {
+                    error: 'Unable to get application ID.',
+                    response: appReq.response
+                }
+            }
+        });
+    }
+    catch(e) {
+        return responseError(e, 'addAssignmentToUser');
+    }   
+}
+
+export const deleteAssignmentToUser = async (assignment) => {
+    try {
+        return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(async appReq => {
+            if(appReq.response.status === 200) {
+                return await apiRequest(API_URI + "/applications/" + appReq.content.applications[0].id + "/roleAssignments/" + assignment.id, {
+                    method: "delete"
+                })
+            }
+            else {
+                return {
+                    error: 'Unable to get application ID.',
+                    response: appReq.response
+                }
+            }
+        });
+    }
+    catch(e) {
+        return responseError(e, 'deleteAssignmentToUser');
+    }   
+}
 
 export const getUsers = async () => {
     try {
@@ -225,16 +276,15 @@ export const getUsers = async () => {
                     var usersReq = await apiRequest(API_URI + "/users");
                     var users = usersReq.content.users;
 
+                    users.forEach(u => {
+                        if(u["rolesAssignments"] === undefined) u["rolesAssignments"] = [];
+                    })
+
                     permissionsReq.content.roleAssignments.forEach(p => {
-                        if(users[p.user.userID - 1]["rolesAssignments"] === undefined) users[p.user.userID - 1]["rolesAssignments"] = [];
-                        users[p.user.userID - 1].rolesAssignments.push(p.applicationRoleId);
+                        users[p.user.userID - 1].rolesAssignments.push(p);
                     });
 
-                    var filteredUsers = users.filter(function(user, index, arr) {
-                        return (user["rolesAssignments"] !== undefined);
-                    });
-
-                    usersReq.content.users = filteredUsers;
+                    usersReq.content.users = users;
                     return usersReq;
                 });
             }
@@ -299,6 +349,72 @@ export const getContract = async contractId => {
         return responseError(e, 'getContract');
     }
 } 
+
+export const getContractUser = async (contractId, roleId) => {
+    try {
+        return await apiRequest(API_URI + "/contracts/" + contractId).then(async contractReq => {
+            if(contractReq.response.status === 200) {
+                switch(roleId) {
+                    case '1': 
+                        return {
+                            response: contractReq.response,
+                            content: {
+                                user: await getContractParty('initiatingCounterparty', contractReq.content.contractProperties)
+                            }
+                        }
+
+                    case '2': 
+                        return {
+                            response: contractReq.response,
+                            content: {
+                                user: await getContractParty('counterparty', contractReq.content.contractProperties)
+                            }
+                        }
+
+                    case '3': 
+                        return {
+                            response: contractReq.response,
+                            content: {
+                                user: await getContractParty('device', contractReq.content.contractProperties)
+                            }
+                        }
+
+                    case '4': 
+                        return {
+                            response: contractReq.response,
+                            content: {
+                                user: await getContractParty('owner', contractReq.content.contractProperties)
+                            }
+                        }
+                    
+                    case '5': 
+                        return {
+                            response: contractReq.response,
+                            content: {
+                                user: await getContractParty('observer', contractReq.content.contractProperties)
+                            }
+                        }
+
+                    default:
+                        return {
+                            response: {
+                                status: 404,
+                                statusText: 'Role ID missing or uncorrect.'
+                            }
+                        }
+                }
+            }
+            else return {
+                error: 'Unable to get contract from ID.',
+                response: contractReq.response
+            }
+        });
+    }
+    catch(e) {
+        return responseError(e, 'getContractUser');
+    }
+} 
+
 
 export const postContract = async contract => {
     try {

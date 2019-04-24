@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import ChooseActionDropdown from '../../components/ChooseActionDropdown/ChooseActionDropdown';
 import TransferResponsibilityModalForm from '../../forms/TransferResponsibilityModalForm/TransferResponsibilityModalForm';
+import IngestTelemetryModalForm from '../../forms/IngestTelemetryModalForm/IngestTelemetryModalForm';
 import loadingGif from '../../../img/loading.gif';
 import BoatIcon from 'react-icons/lib/io/android-boat';
 import LeftArrowIcon from 'react-icons/lib/md/arrow-back';
@@ -65,7 +66,10 @@ class ShipmentDetails extends Component {
     }
 
     refresh(firstTime) {
-        if(!firstTime) this.setContractInState(true);
+        if(!firstTime) {
+            this.setContractInState(true);
+            this.refs.chooseactiondropdown.getAndDisplayContractActions();
+        }
         setTimeout(this.refresh.bind(this, false), 5000)
     }
 
@@ -166,12 +170,10 @@ class ShipmentDetails extends Component {
     getModalFromAction() {
         switch(this.state.actionId) {
             case 2:
-                //ingest telemetry
-                break;
+                return (<IngestTelemetryModalForm parent={ this }/>);
 
             case 3:
                 return (<TransferResponsibilityModalForm parent={ this }/>);
-                break;
 
             default:
                 break;
@@ -191,7 +193,7 @@ class ShipmentDetails extends Component {
                         <div className="col-md-2">
                             <button className="btn btn-smoothblue btn-block" onClick={ this.goToShipments }><LeftArrowIcon/> Go back</button>
                         </div>
-                        <ChooseActionDropdown contractid={ this.contractId } parent={ this }/>
+                        <ChooseActionDropdown ref="chooseactiondropdown" contractid={ this.contractId } parent={ this }/>
                     </div>
                     <div className="row">
                         <div className="col-md-6">

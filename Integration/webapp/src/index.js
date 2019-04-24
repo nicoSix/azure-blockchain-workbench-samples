@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'jquery';
+import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.js';
 import * as serviceWorker from './serviceWorker';
 import { runWithAdal } from 'react-adal';

@@ -5,7 +5,9 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.4.0",
     "local-storage": "^1.4.2",
+    "popper.js": "^1.15.0",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-adal": "^0.4.22",

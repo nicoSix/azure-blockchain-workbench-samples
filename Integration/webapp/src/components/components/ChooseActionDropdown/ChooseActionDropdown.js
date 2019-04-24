@@ -21,6 +21,10 @@ class ChooseActionDropdown extends Component {
     }
 
     componentDidMount() {
+        this.getAndDisplayContractActions();
+    }
+
+    getAndDisplayContractActions() {
         getContractActions(this.contractId).then(contractReq => {
             if(contractReq.content !== undefined)
                 this.setState({
