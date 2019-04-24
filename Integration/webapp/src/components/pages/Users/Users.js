@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import ChooseRoleDropdown from '../../components/ChooseRoleDropdown/ChooseRoleDropdown';
 import loadingGif from '../../../img/loading.gif';
-import { getUsers, deleteAssignmentToUser } from '../../../js/workbenchApi';
+import { getUsers, deleteAssignmentToUser, getUserRights } from '../../../js/workbenchApi';
 import { getRoleFromRoleId } from '../../../js/util';
 import * as qs from 'query-string';
 import './Users.css';
@@ -14,26 +14,26 @@ class Users extends Component {
             users: [],
             filteredUsers: [],
             displayLoadingGif: true,
-            predefinedName: (qs.parse(props.location.search).name !== undefined ? qs.parse(props.location.search).name : false)
+            predefinedName: (qs.parse(props.location.search).name !== undefined ? qs.parse(props.location.search).name : false),
+            canUserModifyRoles: false
         };
+
         document.body.style.background = 'white';
     }
 
     componentDidMount() {
+        this.canUserModifyRoles()
         this.setUsersInState();
     }
 
-    getUsersGridHeader() {
-        return(
-            <div className="row">
-                <div className="col-md-11 form-group">
-                    <input type="text" className="form-control" ref="userSearchField" aria-describedby="userSearchField" placeholder="Type a name or surname to get somebody ..." onChange={ this.filterUsersDelayed.bind(this) }/>
-                </div>
-                <div className="col-md-1 form-group">
-                    <button className="btn btn-smoothblue btn-block">+ Add user</button>
-                </div>
-            </div>
-        );
+    canUserModifyRoles() {
+        getUserRights().then(userReq => {
+            if(userReq.response.status === 200) {
+                this.setState({
+                    canUserModifyRoles: (userReq.content["canModifyRoleAssignments"])
+                });
+            }
+        })
     }
 
     deleteAssignment(assignment) {
@@ -48,7 +48,11 @@ class Users extends Component {
         var stringAssignments = [];
         var i = 0;
         assignments.forEach(assignment => {
-            stringAssignments.push(<span key={i} className="badge badge-smoothblue">{ getRoleFromRoleId(assignment.applicationRoleId) }<i onClick={ this.deleteAssignment.bind(this, assignment) } style={{cursor: 'pointer'}}> x</i></span>);
+            stringAssignments.push(
+                <span key={i} className="badge badge-smoothblue">{ getRoleFromRoleId(assignment.applicationRoleId) }
+                    { this.state.canUserModifyRoles ? <i onClick={ this.deleteAssignment.bind(this, assignment) } style={{cursor: 'pointer'}}> x</i> : <span/> }
+                </span>
+            );
             i++;
         });
 
@@ -129,7 +133,11 @@ class Users extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 my-auto">
-                            { this.getUsersGridHeader() }
+                            <div className="row">
+                                <div className="col-md-12 form-group">
+                                    <input type="text" className="form-control" ref="userSearchField" aria-describedby="userSearchField" placeholder="Type a name or surname to get somebody ..." onChange={ this.filterUsersDelayed.bind(this) }/>
+                                </div>
+                            </div>
                             <table className="table table-responsive table-hover">
                                 <thead>
                                     <tr>
@@ -138,7 +146,7 @@ class Users extends Component {
                                         <th scope="col">Email address</th>
                                         <th scope="col">Blockchain address</th>
                                         <th scope="col">Assignments</th>
-                                        <th scope="col">Actions</th>
+                                        { this.state.canUserModifyRoles ? <th scope="col">Actions</th> : <th/> }
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -149,9 +157,7 @@ class Users extends Component {
                                         <td>{ u.emailAddress }</td>
                                         <td>{ u.userChainMappings[0].chainIdentifier }</td>
                                         <td>{ this.getRoleLabels(u.rolesAssignments, u.userID) }</td>
-                                        <td>
-                                            <ChooseRoleDropdown userId={ u.userID } parent={ this } rolesAlreadyOwned={ u.rolesAssignments }/>
-                                        </td>
+                                        { this.state.canUserModifyRoles ? <td><ChooseRoleDropdown userId={ u.userID } parent={ this } rolesAlreadyOwned={ u.rolesAssignments }/></td> : <td/> }
                                     </tr>
                                 )}
                                 </tbody>

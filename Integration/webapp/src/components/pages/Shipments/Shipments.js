@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
-import { getContracts } from '../../../js/workbenchApi';
+import { getContracts, getUsersFromAssignment, getLoggedUser } from '../../../js/workbenchApi';
 import loadingGif from '../../../img/loading.gif';
 import BoatIcon from 'react-icons/lib/io/android-boat';
 import RefreshIcon from 'react-icons/lib/md/refresh';
@@ -29,7 +29,8 @@ class Shipments extends Component {
             contracts: [],
             filteredContracts: [],
             displayLoadingGif: true,
-            modalIsOpen: false
+            modalIsOpen: false,
+            isOwner: false
         };
 
         this.reversed = false;
@@ -54,6 +55,7 @@ class Shipments extends Component {
     }
 
     componentDidMount() {
+        this.isCurrentUserOwner();
         this.setContractsInState(false);
     }
 
@@ -200,19 +202,50 @@ class Shipments extends Component {
     }
 
     getShipmentsGridHeader() {
-        return(
-            <div className="row">
-                <div className="col-md-1">
-                    <button className="btn btn-smoothblue btn-block" onClick={this.setContractsInState.bind(this, false)}><RefreshIcon/></button>
+        if(this.state.isOwner) {
+            return(
+                <div className="row">
+                    <div className="col-md-1">
+                        <button className="btn btn-smoothblue btn-block" onClick={this.setContractsInState.bind(this, false)}><RefreshIcon/></button>
+                    </div>
+                    <div className="col-md-9 form-group">
+                        <input type="text" className="form-control" ref="ownerSearchField" aria-describedby="ownerSearchField" placeholder="Type an owner name or surname to get owner shipments ..." onChange={ this.filterShipmentsDelayed.bind(this) }/>
+                    </div>
+                    <div className="col-md-2">
+                        <button className="btn btn-smoothblue btn-block" onClick={this.openModal}>+ New shipment</button>
+                    </div>
                 </div>
-                <div className="col-md-9 form-group">
-                    <input type="text" className="form-control" ref="ownerSearchField" aria-describedby="ownerSearchField" placeholder="Type an owner name or surname to get owner shipments ..." onChange={ this.filterShipmentsDelayed.bind(this) }/>
+            );
+        }
+        else {
+            return(
+                <div className="row">
+                    <div className="col-md-1">
+                        <button className="btn btn-smoothblue btn-block" onClick={this.setContractsInState.bind(this, false)}><RefreshIcon/></button>
+                    </div>
+                    <div className="col-md-11 form-group">
+                        <input type="text" className="form-control" ref="ownerSearchField" aria-describedby="ownerSearchField" placeholder="Type an owner name or surname to get owner shipments ..." onChange={ this.filterShipmentsDelayed.bind(this) }/>
+                    </div>
                 </div>
-                <div className="col-md-2">
-                    <button className="btn btn-smoothblue btn-block" onClick={this.openModal}>+ New shipment</button>
-                </div>
-            </div>
-        );
+            );
+        }
+    }
+
+    isCurrentUserOwner() {
+        return getUsersFromAssignment(4).then(usersReq => {
+            if(usersReq.response.status === 200) {
+                return getLoggedUser().then(userReq => {
+                    if(userReq.response.status === 200) {
+                        var externalId = userReq.content.currentUser.externalID;
+                        usersReq.content.roleAssignments.forEach(assignment => {
+                            if(assignment.user.externalID === externalId) {
+                                this.setState({ isOwner: true })
+                            }
+                        })
+                    }
+                })
+            }
+        })
     }
 
     render() {

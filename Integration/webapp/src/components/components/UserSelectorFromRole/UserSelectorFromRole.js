@@ -4,7 +4,7 @@ import { getUsersFromAssignment, getContractUser } from '../../../js/workbenchAp
 class UserSelectorFromRole extends Component {
     constructor(props) {
         super(props);
-        this.roleId = props.role;
+        this.roleId = props.roleId;
         this.innerRole = (props.innerRole ? props.innerRole : false);
         this.contractId = (props.contractId ? props.contractId : -1);
         this.state = {

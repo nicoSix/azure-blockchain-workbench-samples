@@ -33,7 +33,7 @@ class TransferResponsibilityModalForm extends Component {
                 <h2>Transfer Responsibility</h2><br/>
                 <div className="form-group">
                     <label htmlFor="shipmentOwner">Party</label>
-                    <UserSelectorFromRole ref="counterparty" role='2'/>
+                    <UserSelectorFromRole ref="counterparty" roleId='2'/>
                     <br/>
                     <div align="center">
                         <button className="btn btn-smoothblue" onClick={ this.transferResponsibility.bind(this) }>Submit</button>

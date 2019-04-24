@@ -39,11 +39,11 @@ class NewShipmentModalForm extends Component {
                 <h2>Create a new shipment</h2><br/>
                 <div className="form-group">
                     <label htmlFor="shipmentOwner">Device</label>
-                    <UserSelectorFromRole ref="device" role='3'/>
+                    <UserSelectorFromRole ref="device" roleId='3'/>
                     <label htmlFor="shipmentOwner">Owner</label>
-                    <UserSelectorFromRole ref="owner" role='4'/>
+                    <UserSelectorFromRole ref="owner" roleId='4'/>
                     <label htmlFor="shipmentOwner">Observer</label>
-                    <UserSelectorFromRole ref="observer" role='5'/>
+                    <UserSelectorFromRole ref="observer" roleId='5'/>
                     <label htmlFor="minTemperature">Minimal temperature allowed</label>
                     <input type="number" defaultValue="0" className="form-control" ref="minTemperature"/>
                     <label htmlFor="maxTemperature">Maximal temperature allowed</label>

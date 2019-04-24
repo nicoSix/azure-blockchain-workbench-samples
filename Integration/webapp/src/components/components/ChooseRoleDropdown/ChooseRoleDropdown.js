@@ -37,9 +37,9 @@ class ChooseRoleDropdown extends Component {
 
     addRoleToUser(roleId) {
         addAssignmentToUser(this.userId, roleId).then(userReq => {
-            if(userReq.response.status == 200) {
+            if(userReq.response.status === 200) {
                 this.setState({
-                    availableRoles: this.state.availableRoles.filter(function(roleIdInArray) {return roleIdInArray != roleId})
+                    availableRoles: this.state.availableRoles.filter(function(roleIdInArray) {return roleIdInArray !== roleId})
                 });
 
                 this.parent.setUsersInState();

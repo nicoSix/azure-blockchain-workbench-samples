@@ -43,7 +43,7 @@ class IngestTelemetryModalForm extends Component {
                 <h2>Ingest Telemetry (manual)</h2><br/>
                 <div className="form-group">
                     <label htmlFor="device">Device</label>
-                    <UserSelectorFromRole ref="device" role='3' innerRole={ true } contractId={ this.parent.contractId }/>
+                    <UserSelectorFromRole ref="device" roleId='3' innerRole={ true } contractId={ this.parent.contractId }/>
                     <label htmlFor="temperatureInput">Temperature</label>
                     <input type="number" defaultValue="0" className="form-control" ref="temperatureInput"/>
                     <label htmlFor="humidityInput">Humidity</label>

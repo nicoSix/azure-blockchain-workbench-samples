@@ -445,3 +445,14 @@ export const postContractAction = async (contractId, actionId, params) => {
         return responseError(e, 'postContractAction');
     }
 }
+
+export const getUserRights = async () => {
+    try {
+        return await apiRequest(API_URI + "/capabilities").then(userReq => {
+            return responseChecker(userReq, 'Unable to get user rights.');
+        });
+    }
+    catch(e) {
+        return responseError(e, 'getUserRights');
+    }
+}
