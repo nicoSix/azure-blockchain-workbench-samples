@@ -23,7 +23,7 @@ const customStyles = {
 };
 
 /**
- * ShipmentDetails : represent the shipment details page on the Refrigerated Transportation Application
+ * ShipmentDetails : represents the shipment details page on the Refrigerated Transportation Application
  *
  * @version 1.0.0
  * @author [Nicolas Six](https://github.com/nicoSix)

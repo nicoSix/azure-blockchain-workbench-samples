@@ -8,7 +8,7 @@ import * as qs from 'query-string';
 import './Users.css';
 
 /**
- * Users : represent users page on the Refrigerated Transportation Application
+ * Users : represents users page on the Refrigerated Transportation Application
  *
  * @version 1.0.0
  * @author [Nicolas Six](https://github.com/nicoSix)

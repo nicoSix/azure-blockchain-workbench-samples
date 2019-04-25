@@ -3,6 +3,12 @@ import MinimalNavbar from '../../components/MinimalNavbar/MinimalNavbar';
 
 import './Error.css';
 
+/**
+ * Error : represents the error page on the Refrigerated Transportation Application
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class Error extends Component {
     constructor(props) {
         super(props);
@@ -13,10 +19,16 @@ class Error extends Component {
         console.log(this.error);
     }
 
+    /**
+     * goToShipments: redirect the user to shipments page
+     */
     goToShipments() {
         this.props.history.push('/shipments');
     }
 
+    /**
+     * getErrorText: return a JSX object containing the detail about an error
+     */
     getErrorText() {
         switch(this.error) {
             case 'unauthorized':
@@ -39,6 +51,9 @@ class Error extends Component {
         }
     }
 
+    /**
+     * getErrorTitle: return a JSX object containing the title which describes an error
+     */
     getErrorTitle() {
         switch(this.error) {
             case 'unauthorized':

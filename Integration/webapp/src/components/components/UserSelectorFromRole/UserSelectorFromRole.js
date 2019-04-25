@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { getUsersFromAssignment, getContractUser } from '../../../js/workbenchApi';
 
+/**
+ * UserSelectorFromRole: a React component which displays a select input, filled with users (useful for form creation)
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class UserSelectorFromRole extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +21,6 @@ class UserSelectorFromRole extends Component {
     componentDidMount() {
         if(this.innerRole) {
             getContractUser(this.contractId, this.roleId).then(roleReq => {
-                console.log(roleReq)
                 if(roleReq.response.status === 200) { 
                     this.setState({
                         roleAssignments: [roleReq.content]
@@ -34,22 +39,14 @@ class UserSelectorFromRole extends Component {
         }   
     }
 
-    genOptions() {
-        var buffer = [];
-        var i = 0;
-
-        this.state.roleAssignments.forEach(user => {
-            buffer.push(<option key={ i } value={ user.user.userChainMappings[0].chainIdentifier }>{ user.user.firstName + ' ' + user.user.lastName + ' (' + user.user.emailAddress + ')' }</option>);
-            i++;
-        }); 
-
-        return buffer;
-    }
-
     render() {
         return (
             <select ref='selectInput' className="form-control">
-                { this.genOptions() }
+                {this.state.roleAssignments.map((u, index) =>
+                    <option key={ index } value={ u.user.userChainMappings[0].chainIdentifier }>
+                        { u.user.firstName + ' ' + u.user.lastName + ' (' + u.user.emailAddress + ')' }
+                    </option>
+                )}
             </select>
         );
     }

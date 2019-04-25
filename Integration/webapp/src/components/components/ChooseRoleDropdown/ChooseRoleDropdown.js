@@ -3,6 +3,11 @@ import { addAssignmentToUser } from '../../../js/workbenchApi';
 import { getRoleFromRoleId } from '../../../js/util';
 import './ChooseRoleDropdown.css';
 
+/**
+ * ChooseRoleDropdown: a React component which displays possible roles which can be given to a user
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class ChooseRoleDropdown extends Component {
     constructor(props) {
         super(props);
@@ -18,6 +23,10 @@ class ChooseRoleDropdown extends Component {
         this.setAvailableRoles();
     }
 
+    /**
+     * setAvailableRoles: retrieve available roles which can be taken by a user in the app, 
+     * and put them into the dropdown without forgetting to remove roles that the user already have
+     */
     setAvailableRoles() {
         var availableRoles = [];
         var roleIdAlreadyOwned = [];
@@ -35,6 +44,11 @@ class ChooseRoleDropdown extends Component {
         })
     }
 
+    /**
+     * addRoleToUser: add the dropdown selected role to the user linked to the dropdown
+     * 
+     * @param {int} roleId
+     */
     addRoleToUser(roleId) {
         addAssignmentToUser(this.userId, roleId).then(userReq => {
             if(userReq.response.status === 200) {

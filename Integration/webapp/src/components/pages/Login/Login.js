@@ -1,10 +1,19 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import MicrosoftIcon from 'react-icons/lib/ti/vendor-microsoft';
 import MinimalNavbar from '../../components/MinimalNavbar/MinimalNavbar';
 
 import './Login.css';
 
-class Login extends Component {
+/**
+ * Login : represents the login page on the Refrigerated Transportation Application
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
+class Login extends PureComponent {
+    /**
+     * goToShipments: redirect the user to shipments page
+     */
     goToShipments() {
         window.location.href = window.location.origin + '/shipments';
     }

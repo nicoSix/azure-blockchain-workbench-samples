@@ -4,12 +4,21 @@ import { postContract } from '../../../js/workbenchApi';
 import './NewShipmentModalForm.css';
 import '../../../App.css';
 
+/**
+ * NewShipmentModalForm : this is the content inside the modal to create a new shipment
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class NewShipmentModalForm extends Component {
     constructor(props){
         super(props);
         this.parent = props.parent;
     };
 
+    /**
+     * NewShipmentModalForm: executed after clicking on Submit, send the form data to a function which will execute a transaction to create the shipment
+     */
     createShipment() {
         var contract = {
             device: this.refs.device.refs.selectInput.value,

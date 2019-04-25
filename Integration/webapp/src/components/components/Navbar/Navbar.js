@@ -4,6 +4,12 @@ import logoSmall from '../../../img/microsoft_logo_small.png';
 import { authContextApi } from '../../../js/adalConfig';
 import { getLoggedUser } from '../../../js/workbenchApi';
 
+/**
+ * Navbar: a React component which is the navbar, integrated into every page of the app (except Login/Error)
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class Navbar extends Component {
     constructor(props) {
         super(props);
@@ -16,15 +22,7 @@ class Navbar extends Component {
         }
     }
 
-    logOut() {
-        authContextApi.logOut();
-    }
-
-    openCurrentUser() {
-        window.location.href = window.location.origin + '/users?name=' + this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName;
-    }
-
-    async componentDidMount() {
+    componentDidMount() {
         getLoggedUser().then(userReq => {
             if(userReq.response.status === 200) {
                 this.setState({
@@ -32,6 +30,20 @@ class Navbar extends Component {
                 })
             }
         });
+    }
+
+    /**
+     * logOut: triggers the logOut procedure by opening Microsoft logout window
+     */
+    logOut() {
+        authContextApi.logOut();
+    }
+
+    /**
+     * openCurrentUser: redirects the user into the users page, and display his information
+     */
+    openCurrentUser() {
+        window.location.href = window.location.origin + '/users?name=' + this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName;
     }
 
     render() {

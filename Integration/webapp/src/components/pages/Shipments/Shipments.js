@@ -22,7 +22,7 @@ const customStyles = {
 Modal.setAppElement(document.getElementById('root'));
 
 /**
- * Shipments : represent the shipments page on the Refrigerated Transportation Application
+ * Shipments : represents the shipments page on the Refrigerated Transportation Application
  *
  * @version 1.0.0
  * @author [Nicolas Six](https://github.com/nicoSix)
@@ -67,7 +67,7 @@ class Shipments extends Component {
      */
     refreshShipments(firstTime) {
         if(!firstTime) this.setContractsInState(true);
-        setTimeout(this.refresh.bind(this, false), 60000)
+        setTimeout(this.refreshShipments.bind(this, false), 60000)
     }
 
     /**

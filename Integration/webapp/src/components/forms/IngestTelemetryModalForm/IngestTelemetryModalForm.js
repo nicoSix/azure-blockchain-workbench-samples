@@ -4,12 +4,21 @@ import { postContractAction } from '../../../js/workbenchApi';
 import './IngestTelemetryModalForm.css';
 import '../../../App.css';
 
+/**
+ * IngestTelemetryModalForm : this is the content inside the modal to execute the action Ingest Telemetry
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class IngestTelemetryModalForm extends Component {
     constructor(props){
         super(props);
         this.parent = props.parent;
     };
 
+    /**
+     * ingestTelemetry: executed after clicking on Submit, send the form data to a function which will execute a transaction to post the action
+     */
     ingestTelemetry() {
         var params = [
             {

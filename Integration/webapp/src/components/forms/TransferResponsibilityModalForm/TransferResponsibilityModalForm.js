@@ -4,12 +4,21 @@ import { postContractAction } from '../../../js/workbenchApi';
 import './TransferResponsibilityModalForm.css';
 import '../../../App.css';
 
+/**
+ * TransferResponsibilityModalForm : this is the content inside the modal for to execute the action Transfer Responsibility
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class TransferResponsibilityModalForm extends Component {
     constructor(props){
         super(props);
         this.parent = props.parent;
     };
 
+    /**
+     * transferResponsibility: executed after clicking on Submit, send the form data to a function which will execute a transaction to post the action
+     */
     transferResponsibility() {
         var params = [
             {
