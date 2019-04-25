@@ -11,4 +11,4 @@ You will find samples for:
 - [Raspberry Pi](./raspberry-pi-device)
 - [Simulated Device (node.js)](./simulated-device)
 
-For each of those samples, please follow [the guide](../End-to-End Blockchain Solution - Refrigered Supply Chain Sample.pdf) to learn how to setup them and connect them to Azure.
+For each of those samples, please follow [the guide](../End-to-End%20Blockchain%20Solution%20-%20Refrigered%20Supply%20Chain%20Sample.pdf) to learn how to setup them and connect them to Azure.
