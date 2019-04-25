@@ -4,6 +4,12 @@ import fetch from 'isomorphic-fetch';
 
 const API_URI = 'https://bcworkbench-nwiyh3-api.azurewebsites.net/api/v1';
 
+/**
+ * apiRequest : function which executes a request and parse the answer
+ * 
+ * @param {string} URL request URL
+ * @param {*} options variable containing request optional parameters
+ */
 function apiRequest(URL, options) {
     return adalApiFetch(fetch, URL, options)
         .then(response => {
@@ -32,6 +38,11 @@ function apiRequest(URL, options) {
         });    
 }
 
+/**
+ * parseBodyContract: return a request body from contract informations
+ * 
+ * @param {JSON} contract informations about the contract
+ */
 function parseBodyContract(contract) {
     return JSON.stringify({
         "workflowFunctionID": 0,
@@ -75,6 +86,12 @@ function parseBodyContract(contract) {
       });
 }
 
+/**
+ * responseChecker: parse an error request response if request failed
+ * 
+ * @param {JSON} resp the request response
+ * @param {string} errorText an optional response text 
+ */
 function responseChecker(resp, errorText) {
     if(resp.response.status === 200) return resp;
     else return {
@@ -83,6 +100,12 @@ function responseChecker(resp, errorText) {
     }
 }
 
+/**
+ * responseError: return an error object which will act as  an error request response if an exception occurs in a request function
+ * 
+ * @param {Exception} e the exception
+ * @param {string} functionName the function which failed
+ */
 function responseError(e, functionName) {
     return {
         error: 'Exception in ' + functionName + ' request.',
@@ -93,6 +116,12 @@ function responseError(e, functionName) {
     }
 }
 
+/**
+ * getContractParty: return information about a party from the contract
+ * 
+ * @param {string} party the party which we are looking for
+ * @param {Array} contractParties the contract parties
+ */
 async function getContractParty(party, contractParties) {
     return await ((party, contractParties) => {
         switch(party) {
@@ -133,6 +162,9 @@ async function getContractParty(party, contractParties) {
     })
 }
 
+/**
+ * getContracts: return the list of all the shipments, enhanced with parties informations
+ */
 export const getContracts = async () => {
     try {
         return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
@@ -186,6 +218,11 @@ export const getContracts = async () => {
     }
 };
 
+/**
+ * getUserDetails: retrieve user details from his Ethereum address
+ * 
+ * @param {string} userChainIdentifier hexadecimal Ethereum address which represents a user
+ */
 export const getUserDetails = async userChainIdentifier => {
     try {
         return await apiRequest(API_URI + "/users?userChainIdentifier=" + userChainIdentifier).then(userReq => {
@@ -197,6 +234,9 @@ export const getUserDetails = async userChainIdentifier => {
     }
 }
 
+/**
+ * getLoggedUser: get informations about the user which executes this function (by extension, the logged user in the app)
+ */
 export const getLoggedUser = async () => {
     try {
         return await apiRequest(API_URI + "/users/me").then(userReq => {
@@ -208,6 +248,11 @@ export const getLoggedUser = async () => {
     }
 }
 
+/**
+ * getContractActions: get possible actions which can be executed for a specified contract
+ * 
+ * @param {int} contractId ID of the specified contract
+ */
 export const getContractActions = async contractId => {
     try {
         return await apiRequest(API_URI + "/contracts/" + contractId + "/actions").then(contractReq => {
@@ -219,6 +264,12 @@ export const getContractActions = async contractId => {
     }
 }
 
+/**
+ * addAssignmentToUser: add a defined assignment to a user, by providing the wanted role ID
+ * 
+ * @param {int} userId 
+ * @param {int} roleId
+ */
 export const addAssignmentToUser = async (userId, roleId) => {
     try {
         return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(async appReq => {
@@ -247,6 +298,11 @@ export const addAssignmentToUser = async (userId, roleId) => {
     }   
 }
 
+/**
+ * deleteAssignmentToUser: delete an assignment with its ID and additional informations
+ * 
+ * @param {JSON} assignment the object containing assignment informations
+ */
 export const deleteAssignmentToUser = async (assignment) => {
     try {
         return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(async appReq => {
@@ -268,6 +324,9 @@ export const deleteAssignmentToUser = async (assignment) => {
     }   
 }
 
+/**
+ * getUsers: retrieve all users of the application, but also their role assignments
+ */
 export const getUsers = async () => {
     try {
         return await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
@@ -301,6 +360,11 @@ export const getUsers = async () => {
     }
 };
 
+/**
+ * getUsersFromAssignment: get all the users which have a specified role in the application
+ * 
+ * @param {int} roleId 
+ */
 export const getUsersFromAssignment = async roleId => {
     try {
         var appRes = await apiRequest(API_URI + "/applications?name=RefrigeratedTransportation").then(appReq => {
@@ -327,6 +391,11 @@ export const getUsersFromAssignment = async roleId => {
     }
 }
 
+/**
+ * getContract: get contract informations from its contract ID
+ * 
+ * @param {int} contractId 
+ */
 export const getContract = async contractId => {
     try {
         return await apiRequest(API_URI + "/contracts/" + contractId).then(async contractReq => {
@@ -350,6 +419,12 @@ export const getContract = async contractId => {
     }
 } 
 
+/**
+ * getContractUser: retrieve a user from a defined contract, from his role
+ * 
+ * @param {int} contractId 
+ * @param {int} roleId 
+ */
 export const getContractUser = async (contractId, roleId) => {
     try {
         return await apiRequest(API_URI + "/contracts/" + contractId).then(async contractReq => {
@@ -415,7 +490,11 @@ export const getContractUser = async (contractId, roleId) => {
     }
 } 
 
-
+/**
+ * postContract: post a new contract on the blockchain
+ * 
+ * @param {JSON} contract an object which contains contract informations, to build the request body
+ */
 export const postContract = async contract => {
     try {
         return await apiRequest(API_URI + "/contracts?workflowId=1&contractCodeId=1&connectionId=1", {
@@ -431,6 +510,13 @@ export const postContract = async contract => {
     }
 }
 
+/**
+ * postContractAction: send a transaction to the blockchain (an action in the context of the workbench) 
+ * 
+ * @param {int} contractId
+ * @param {int} actionId
+ * @param {JSON} params contains action parameters depending of the action type
+ */
 export const postContractAction = async (contractId, actionId, params) => {
     try {
         return await apiRequest(API_URI + "/contracts/" + contractId + "/actions", {
@@ -446,6 +532,9 @@ export const postContractAction = async (contractId, actionId, params) => {
     }
 }
 
+/**
+ * getUserRight: get workbench current user right
+ */
 export const getUserRights = async () => {
     try {
         return await apiRequest(API_URI + "/capabilities").then(userReq => {

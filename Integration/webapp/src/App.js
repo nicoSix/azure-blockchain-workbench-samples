@@ -9,6 +9,12 @@ import { withAdalLoginApi } from './js/adalConfig';
 
 import './App.css';
 
+/**
+ * App : main component, contains a router which redirects to a specified page of the app depending of the taken route
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class App extends Component {
   render() {
     return (

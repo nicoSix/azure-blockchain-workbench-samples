@@ -1,3 +1,7 @@
+/**
+ * getRoleFromRoleId : return a litteral role name from a role ID defined in the contract template
+ * @param {int} roleId the role number corresponding to a litteral role
+ */
 export const getRoleFromRoleId = roleId => {
     switch(roleId) {
         case 4: 

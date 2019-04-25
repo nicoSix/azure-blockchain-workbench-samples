@@ -7,6 +7,12 @@ import { getRoleFromRoleId } from '../../../js/util';
 import * as qs from 'query-string';
 import './Users.css';
 
+/**
+ * Users : represent users page on the Refrigerated Transportation Application
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class Users extends Component {
     constructor(props) {
         super(props);
@@ -26,6 +32,9 @@ class Users extends Component {
         this.setUsersInState();
     }
 
+    /**
+     * canUserModifyRoles : make a request to set in state a boolean indicating if the user can modify roles or not
+     */
     canUserModifyRoles() {
         getUserRights().then(userReq => {
             if(userReq.response.status === 200) {
@@ -36,6 +45,11 @@ class Users extends Component {
         })
     }
 
+    /**
+     * deleteAssignment : delete an assignment of a user (only available for admins)
+     * 
+     * @param {JSON} assignment object containing assignment information (ID, name ...)
+     */
     deleteAssignment(assignment) {
         deleteAssignmentToUser(assignment).then(response => {
             if(response.status === 204) {
@@ -44,6 +58,11 @@ class Users extends Component {
         });
     } 
 
+    /**
+     * getRoleLabels : generate labels in the assignment column which indicates user roles
+     * 
+     * @param {JSON} assignments object containing assignments with their information (ID, name ...)
+     */
     getRoleLabels(assignments) {
         var stringAssignments = [];
         var i = 0;
@@ -59,33 +78,45 @@ class Users extends Component {
         return stringAssignments;
     }
 
+    /**
+     * filterUsers : hide users in the table if they are not corresponding to asked criterias
+     */
     filterUsers() {
         var keepValue;
         var tempUsers = [];
 
-        this.setState({ filteredContracts: [], displayLoadingGif: true});
+        this.setState({ filteredUsers: [], displayLoadingGif: true});
 
         this.state.users.forEach(user => {
             keepValue = true;
-            if(this.refs.userSearchField.value !== '' && !this.isSearchedUserInContract(user.firstName.toLowerCase(), user.lastName.toLowerCase())) keepValue = false;
+            if(this.refs.userSearchField.value !== '' && !this.isUserSearched(user.firstName.toLowerCase(), user.lastName.toLowerCase())) keepValue = false;
             if (keepValue) tempUsers.push(user);
         });
 
-        if(this.state.reverse) this.setState({filteredContracts: tempUsers.reverse(), displayLoadingGif: false});
+        if(this.state.reverse) this.setState({filteredUsers: tempUsers.reverse(), displayLoadingGif: false});
         else this.setState({filteredUsers: tempUsers, displayLoadingGif: false});
     }
 
+    /**
+     * filterUsersDelayed : set a timeout which calls the filterUsers function after a fixed amount of time (to avoid mass refreshs when typing for a user in the search bar)
+     */
     filterUsersDelayed() {
         clearTimeout(this.inputTimeout);
         this.inputTimeout = setTimeout(this.filterUsers.bind(this), 500);
     }
 
-    isSearchedUserInContract(firstName, lastName) {
+    /**
+     * isUserSearched : return a boolean which indicates if the user 
+     */
+    isUserSearched(firstName, lastName) {
         if((firstName + lastName).includes(this.refs.userSearchField.value.replace(/\s/g, '').toLowerCase())) return true;
         if((lastName + firstName).includes(this.refs.userSearchField.value.replace(/\s/g, '').toLowerCase())) return true;
         return false;
     }
 
+    /**
+     *  setUsersInState : set the user variable in the state, after requesting for them
+     */
     setUsersInState() {
         this.setState({ displayLoadingGif: true, filteredUsers: [] });
         getUsers().then(usersRequest => {

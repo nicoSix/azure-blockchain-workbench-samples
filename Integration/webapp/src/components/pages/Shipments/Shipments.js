@@ -21,6 +21,12 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
+/**
+ * Shipments : represent the shipments page on the Refrigerated Transportation Application
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class Shipments extends Component {
     constructor(props) {
         super(props);
@@ -38,12 +44,7 @@ class Shipments extends Component {
         this.closeModal = this.closeModal.bind(this);
         document.body.style.background = 'white';
 
-        this.refresh(true);
-    }
-
-    refresh(firstTime) {
-        if(!firstTime) this.setContractsInState(true);
-        setTimeout(this.refresh.bind(this, false), 60000)
+        this.refreshShipments(true);
     }
 
     openModal() {
@@ -59,6 +60,21 @@ class Shipments extends Component {
         this.setContractsInState(false);
     }
 
+    /**
+     * refreshShipments: refresh shipments on the page every 60 seconds
+     * 
+     * @param {int} firstTime avoid execution when the timer starts
+     */
+    refreshShipments(firstTime) {
+        if(!firstTime) this.setContractsInState(true);
+        setTimeout(this.refresh.bind(this, false), 60000)
+    }
+
+    /**
+     * setContractsInState: retrieve contracts from an API request and set them in state
+     * 
+     * @param {bool} silentRefresh indicates if we're displaying a loading gif (first load from nothing to shipment list) or not (refresh)
+     */
     setContractsInState(silentRefresh) {
         if(!silentRefresh) this.setState({ displayLoadingGif: true });
 
@@ -92,6 +108,11 @@ class Shipments extends Component {
         });
     }
 
+    /**
+     * getContractState: generates a label containing the litteral state of a shipment, for render()
+     * 
+     * @param {char} state the state ID representing a litteral state
+     */
     getContractState(state) {
         switch (state) {
             case '0':
@@ -114,6 +135,12 @@ class Shipments extends Component {
         }
     }
 
+    /**
+     * createStateLabel: generates the JSX of the label
+     * 
+     * @param {string} color CSS color of the generated label (litteral or hex)
+     * @param {string} content litteral state
+     */
     createStateLabel(color, content) {
         return (<span style={{
             color: 'white',
@@ -125,10 +152,19 @@ class Shipments extends Component {
         }}>{ content }</span>);
     }
 
+    /**
+     * getReadableTimestamp: convert a timestamp to litteral date
+     * 
+     * @param {int} ts timestamp
+     */
     getReadableTimestamp(ts) {
         return new Date(ts).toDateString();
     }
 
+    /**
+     * filterShipments: takes the shipment list and put them into another ordered shipment list 
+     * (if the shipment meet asked criterias) which will be displayed 
+     */
     filterShipments() {
         var keepValue;
         var tempContracts = [];
@@ -175,17 +211,30 @@ class Shipments extends Component {
         });
     }
 
+    /**
+     * filterShipmentsDelayed: call the filterShipment function after a certain amount of time
+     * without typing something else into the search bar 
+     */
     filterShipmentsDelayed() {
         clearTimeout(this.inputTimeout);
         this.inputTimeout = setTimeout(this.filterShipments.bind(this), 500);
     }
 
+    /**
+     * isSearchedOwnerInContract: search if the owner firstname and lastname corresponds with the text entered inside the search bar
+     * 
+     * @param {string} firstName 
+     * @param {string} lastName 
+     */
     isSearchedOwnerInContract(firstName, lastName) {
         if((firstName + lastName).includes(this.refs.ownerSearchField.value.replace(/\s/g, '').toLowerCase())) return true;
         if((lastName + firstName).includes(this.refs.ownerSearchField.value.replace(/\s/g, '').toLowerCase())) return true;
         return false;
     }
 
+    /**
+     * orderShipments: order the shipments in asc or desc order, depending of the reversed state variable
+     */
     orderShipments() {
         if(this.refs.ascRadio.checked) {
             if(this.reversed) {
@@ -201,6 +250,9 @@ class Shipments extends Component {
         }
     }
 
+    /**
+     * getShipmentsGridHeader: display the components block above the shipment list, depending of the isOwner state
+     */
     getShipmentsGridHeader() {
         if(this.state.isOwner) {
             return(
@@ -231,6 +283,9 @@ class Shipments extends Component {
         }
     }
 
+    /**
+     * Check if the current logged user got the owner role in the solution
+     */
     isCurrentUserOwner() {
         return getUsersFromAssignment(4).then(usersReq => {
             if(usersReq.response.status === 200) {

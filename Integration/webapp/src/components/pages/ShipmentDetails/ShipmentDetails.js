@@ -22,6 +22,12 @@ const customStyles = {
     }
 };
 
+/**
+ * ShipmentDetails : represent the shipment details page on the Refrigerated Transportation Application
+ *
+ * @version 1.0.0
+ * @author [Nicolas Six](https://github.com/nicoSix)
+ */
 class ShipmentDetails extends Component {
     constructor(props) {
         super(props);
@@ -61,16 +67,8 @@ class ShipmentDetails extends Component {
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
-        this.refresh(true);
+        this.refreshShipmentDetails(true);
         document.body.style.background = 'white';
-    }
-
-    refresh(firstTime) {
-        if(!firstTime) {
-            this.setContractInState(true);
-            this.refs.chooseactiondropdown.getAndDisplayContractActions();
-        }
-        setTimeout(this.refresh.bind(this, false), 5000)
     }
 
     async componentDidMount() {
@@ -85,6 +83,22 @@ class ShipmentDetails extends Component {
         this.setState({modalIsOpen: false});
     }
 
+    /**
+     * refreshShipmentDetails: refresh shipmentDetails on the page every 5 seconds
+     * 
+     * @param {bool} firstTime avoid execution when the timer starts
+     */
+    refreshShipmentDetails(firstTime) {
+        if(!firstTime) {
+            this.setContractInState(true);
+            this.refs.chooseactiondropdown.getAndDisplayContractActions();
+        }
+        setTimeout(this.refreshShipmentDetails.bind(this, false), 5000)
+    }
+
+    /**
+     * genPropertiesTab: generates an empty properties tab to fill the contractProperties state, to avoid an undefined error inside the render()
+     */
     genPropertiesTab() {
         var pTab = new Array(17);
         for(var i = 0; i < 17; i++) {
@@ -95,6 +109,11 @@ class ShipmentDetails extends Component {
         }
     }
 
+    /**
+     * setContractsInState: retrieve contract from an API request and set them in state
+     * 
+     * @param {bool} silentRefresh indicates if we're displaying a loading gif (first load from nothing to shipment details) or not (refresh)
+     */
     setContractInState(silentRefresh) {
         if(!silentRefresh) this.setState({displayLoadingGif: true});
 
@@ -108,10 +127,16 @@ class ShipmentDetails extends Component {
         if(!silentRefresh) this.setState({displayLoadingGif: false});
     }
 
+    /**
+     * goToShipments: redirect the user to shipments page
+     */
     goToShipments() {
         window.location.href = window.location.origin + '/shipments';
     }
 
+    /**
+     * getLastTelemetryUpdate: look up inside the contractProperties state to get last telemetry timestamp and display it as text, if not found return 'Unknown'
+     */
     getLastTelemetryUpdate() {
         try {
             return new Date(this.state.contract.contractProperties[16].value*1000).toDateString();
@@ -121,6 +146,12 @@ class ShipmentDetails extends Component {
         }
     }
 
+ 
+    /**
+     * getContractState: generates a label containing the litteral state of a shipment, for render()
+     * 
+     * @param {char} state the state ID representing a litteral state
+     */
     getContractState(state) {
         switch (state) {
             case '0':
@@ -140,6 +171,9 @@ class ShipmentDetails extends Component {
         }
     }
 
+    /**
+     * getLastCounterpartyIfDefined: lookup in the contract to get the last contract counterparty and returns his firstname and lastname, or unknown if undefined
+     */
     getLastCounterpartyIfDefined() {
         if(this.state.contract.lastCounterparty.firstName !== 'Unknown') return (
             <p className="card-text">- Last Counterparty :
@@ -148,6 +182,9 @@ class ShipmentDetails extends Component {
         )
     }
 
+    /**
+     * getCounterpartyIfDefined: lookup in the contract to get the current contract counterparty and returns his firstname and lastname, or unknown if undefined
+     */
     getCounterpartyIfDefined() {
         if(this.state.contract.currentCounterparty.firstName !== 'Unknown') return (
             <p className="card-text">- Current Counterparty :
@@ -156,6 +193,12 @@ class ShipmentDetails extends Component {
         )
     }
 
+    /**
+     * createStateLabel: generates the JSX of the label
+     * 
+     * @param {string} color CSS color of the generated label (litteral or hex)
+     * @param {string} content litteral state
+     */
     createStateLabel(color, content) {
         return (<span style={{
             color: 'white',
@@ -167,6 +210,9 @@ class ShipmentDetails extends Component {
         }}>{ content }</span>);
     }
 
+    /**
+     * getModalFromAction: return a react component which will be displayed in the modal window, depending of the user choices
+     */
     getModalFromAction() {
         switch(this.state.actionId) {
             case 2:
