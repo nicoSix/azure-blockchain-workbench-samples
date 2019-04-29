@@ -12,13 +12,11 @@
 // or use an HSM or an x509 certificate.
 // https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
 
-var DEVICE_ID = 'SimulatedDevice';
 
 // Using the Azure CLI:
 // az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
-var connectionString = 'HostName=myhubforworkbench.azure-devices.net;DeviceId=' + DEVICE_ID + ';SharedAccessKey=vLCcNiVZ7UCTDdlZ0CAr7qfH99AHSoOt0Tu48MAtHEE=';
-connectionString = 'HostName=nsix-workbench-hub.azure-devices.net;DeviceId=SimulatedDevice;SharedAccessKey=8/VtQFJ0uXkQ2msQFg6EzSg+PNm5lDHeNma2sy4U/fs=';
-// Using the Node.js Device SDK for IoT Hub:
+var connectionString = '<Paste your Device Connection String here>';
+
 //   https://github.com/Azure/azure-iot-sdk-node
 // The sample connects to a device-specific MQTT endpoint on your IoT Hub.
 var Mqtt = require('azure-iot-device-mqtt').Mqtt;
