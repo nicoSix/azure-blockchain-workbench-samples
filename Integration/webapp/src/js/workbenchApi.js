@@ -2,7 +2,7 @@
 import { adalApiFetch } from './adalConfig';
 import fetch from 'isomorphic-fetch';
 
-const API_URI = 'https://bcworkbench-nwiyh3-api.azurewebsites.net/api/v1';
+const API_URI = '<your API URL here>/api/v1';
 
 /**
  * apiRequest : function which executes a request and parse the answer
@@ -172,27 +172,35 @@ export const getContracts = async () => {
                 return apiRequest(API_URI + "/applications/" + appReq.content.applications[0].id + "/workflows").then(wfReq => {
                     if(wfReq.response.status === 200) {
                         return apiRequest(API_URI + "/contracts?top=99999&workflowId=" + wfReq.content.workflows[0].id).then(async contractsReq => {
-                            if(contractsReq.response.status === 200) {
-                                var contracts = contractsReq.content.contracts;
+                            if(contractsReq["status"] !== 204) {
+                                if(contractsReq.response.status === 200) {
+                                    var contracts = contractsReq.content.contracts;
                                 
-                                for(var i = 0; i < contracts.length; i++) {
-                                    if(contracts[i].contractProperties.length !== 0) {
-                                        contracts[i]["owner"] = await getContractParty('owner', contracts[i].contractProperties);
-                                        contracts[i]["deploymentInProgress"] = false;
+                                    for(var i = 0; i < contracts.length; i++) {
+                                        if(contracts[i].contractProperties.length !== 0) {
+                                            contracts[i]["owner"] = await getContractParty('owner', contracts[i].contractProperties);
+                                            contracts[i]["deploymentInProgress"] = false;
+                                        }
+                                        else {
+                                            contracts[i]["deploymentInProgress"] = true;
+                                        }
                                     }
-                                    else {
-                                        contracts[i]["deploymentInProgress"] = true;
+                                    return {
+                                        content: contracts,
+                                        response: contractsReq.response
+                                    };
+                                }
+                                else {
+                                    return {
+                                        error: 'Unable to get contracts.',
+                                        response: contractsReq.response
                                     }
                                 }
-                                return {
-                                    content: contracts,
-                                    response: contractsReq.response
-                                };
                             }
                             else {
                                 return {
-                                    error: 'Unable to get contracts.',
-                                    response: contractsReq.response
+                                    content: [],
+                                    response: contractsReq
                                 }
                             }
                         });

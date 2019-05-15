@@ -80,7 +80,7 @@ class Shipments extends Component {
 
         getContracts().then(contractsRequest => {
             switch(contractsRequest.response.status) {
-                case 200: 
+                case 200: case 204: 
                     this.setState({
                         contracts: contractsRequest.content,
                     })

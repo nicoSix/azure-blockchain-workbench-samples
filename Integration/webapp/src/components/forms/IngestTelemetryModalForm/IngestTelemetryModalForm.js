@@ -23,17 +23,17 @@ class IngestTelemetryModalForm extends Component {
         var params = [
             {
                 "name": "humidity",
-                "value": this.refs.counterparty.refs.humidityInput.value,
+                "value": this.refs.humidityInput.value,
                 "workflowFunctionParameterId": 0,
             },
             {
                 "name": "temperature",
-                "value": this.refs.counterparty.refs.temperatureInput.value,
+                "value": this.refs.temperatureInput.value,
                 "workflowFunctionParameterId": 1,
             },
             {
                 "name": "timestamp",
-                "value": this.refs.counterparty.refs.timestampInput.value,
+                "value": this.refs.timestampInput.value,
                 "workflowFunctionParameterId": 2,
             }
         ]

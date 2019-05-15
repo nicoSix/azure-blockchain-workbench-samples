@@ -1,7 +1,7 @@
 import { AuthenticationContext, adalFetch, withAdalLogin } from 'react-adal';
 
 // App Registration ID
-const workbenchApiID = '4083c3c9-8e6f-48f8-96ed-f625d2d14322';
+const workbenchApiID = '<your Workbench App ID here>';
 
 // API Configuration
 export const adalConfigApi = {
