@@ -1,8 +1,8 @@
-# Refrigerated Supply Chain samples
+# Azure Blockchain Workbench samples
 
 ## Overview 
 
-This repository hosts the Refrigerated Supply Chain code samples for the [Building IoT-based solutions with Azure Blockchain Workbench - A guide for developers](./Documentation/Building%20IoT-based%20solutions%20with%20Azure%20Blockchain%20Workbench%20-%20A%20guide%20for%20developers.pdf).
+This repository hosts the code samples for the [Building IoT-based solutions with Azure Blockchain Workbench - A guide for developers](./Documentation/Building%20IoT-based%20solutions%20with%20Azure%20Blockchain%20Workbench%20-%20A%20guide%20for%20developers.pdf).
 
 The main objective of this guide is to show you how to implement an end-to-end solution based on a real scenario, which will capitalize on Azure Blockchain Workbench to reveal its full potential: refrigerated transportation of products. 
 
