@@ -10,7 +10,7 @@
     "popper.js": "^1.15.0",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
-    "react-adal": "^0.4.22",
+    "react-adal": "^0.5.1",
     "react-dom": "^16.8.6",
     "react-icons": "^2.2.7",
     "react-modal": "^3.8.1",
